@@ -609,8 +609,9 @@ body::before {
 }
 
 @media (max-width: 600px) {
-  .navbar nav {
-    display:none;
+  .nav-links {
+    display:flex;
+    will-change: transform;
   }
   
   /* HAMBURGER ICON */
