@@ -16,7 +16,7 @@
 <header class="navbar">
   <div class="logo">Timber & Type</div>
 
-  <nav class="nav-links">
+  <nav class="nav-desktop">
     <a href="index.html">Home</a>
   </nav>
 
@@ -26,6 +26,9 @@
     <span></span>
   </div>
 </header>
+
+  <nav class="nav-links">
+    <a href="index.html">HOME</a>
 
 <div class="catalog-tabs">
   <a href="catalog.html?type=room">Rooms</a>
@@ -108,7 +111,6 @@
     </div>
   </div>
 
-  <div class="menu-overlay"></div>
 
 </section>
 
@@ -117,6 +119,8 @@
     <p>We are crafting new vintage collections ✨ </p>
 </section>
 
+<div class="menu-overlay"></div>
+  
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -127,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelectorAll(".catalog-tabs a").forEach(link => {
   const urlType = new URL(link.href).searchParams.get("type");
 
-  if (urlType === type) {
+  if (urlType === type || (!type && urlType === "room)) {
     link.classList.add("active");
   }
 });
@@ -144,9 +148,9 @@ document.querySelectorAll(".catalog-tabs a").forEach(link => {
     const activeSection = document.getElementById(type);
     activeSection.style.display = "block";
 
-  activeSection.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
+  window.scrollTo({
+    top: activeSection.offsetTop - 80,
+    behavior: "smooth"
   });
 
   } else {
@@ -177,51 +181,38 @@ document.querySelectorAll(".catalog-tabs a").forEach(link => {
 </script>
 
 <script>
-window.addEventListener("load", () => {
-  const loader = document.querySelector(".loader");
-
-  setTimeout(() => {
-    loader.classList.add("hide");
-  }, 1500); // match animation time
-});
-</script>
-
-<script>
 document.addEventListener("DOMContentLoaded", () => {
 
   const toggle = document.getElementById("menu-toggle");
   const nav = document.querySelector(".nav-links");
   const overlay = document.querySelector(".menu-overlay");
 
-  if (!toggle || !nav || !overlay) return;
-
-  let isOpen = false;
+  if (!toggle || !nav || !overlay) {
+    console.error("Menu elements missing");
+    return;
+  }
 
   toggle.addEventListener("click", (e) => {
     e.stopPropagation();
 
-    isOpen = !isOpen;
-
-    if (isOpen) {
-      nav.classList.add("active");
-      overlay.classList.add("active");
-      toggle.classList.add("active");
-    } else {
-      closeMenu();
-    }
+    nav.classList.toggle("active");
+    overlay.classList.toggle("active");
+    toggle.classList.toggle("active");
   });
 
   overlay.addEventListener("click", closeMenu);
 
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
   function closeMenu() {
-    isOpen = false;
     nav.classList.remove("active");
     overlay.classList.remove("active");
     toggle.classList.remove("active");
   }
 
 });
-  
 </script>
 
 </body>
