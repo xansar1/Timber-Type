@@ -29,7 +29,7 @@
 </header>
 
 <!-- 🔥 MOBILE MENU OUTSIDE -->
-<nav class="nav-links">
+<nav class="nav-links" id="mobile-menu">
   <a href="#">Home</a>
   <a href="#craft">Craft</a>
   <a href="#material">Material</a>
@@ -189,35 +189,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".nav-links");
   const overlay = document.querySelector(".menu-overlay");
 
-  if (!toggle || !nav || !overlay) return;
+  if (!toggle || !nav || !overlay) {
+    console.error("Menu elements missing");
+    return;
+  }
 
-  let isOpen = false;
-
+  // 🔁 TOGGLE MENU
   toggle.addEventListener("click", (e) => {
     e.stopPropagation();
 
-    isOpen = !isOpen;
-
-    if (isOpen) {
-      nav.classList.add("active");
-      overlay.classList.add("active");
-      toggle.classList.add("active");
-    } else {
-      closeMenu();
-    }
+    nav.classList.toggle("active");
+    overlay.classList.toggle("active");
+    toggle.classList.toggle("active");
   });
 
+  // ❌ CLOSE ON OVERLAY CLICK
   overlay.addEventListener("click", closeMenu);
 
+  // ❌ CLOSE ON LINK CLICK (THIS IS YOUR ISSUE 3 FIX)
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
   function closeMenu() {
-    isOpen = false;
     nav.classList.remove("active");
     overlay.classList.remove("active");
     toggle.classList.remove("active");
   }
 
 });
-  
 </script>
 
 </body>
