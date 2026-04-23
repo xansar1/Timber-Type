@@ -658,7 +658,6 @@ body::before {
     max-width: 280px;
 
     background: rgba(62,44,35,0.9);
-    backdrop-filter: blur(12px);
 
     display: flex;
     flex-direction: column;
