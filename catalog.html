@@ -168,12 +168,14 @@ document.querySelectorAll(".catalog-tabs a").forEach(link => {
     img.addEventListener("click", () => {
       const name = img.dataset.name;
 
-      const confirmAction = confirm(`View "${name}" and contact on WhatsApp?`);
+     const confirmAction = confirm("View \"" + name + "\" and contact on WhatsApp?");
 
-     window.open(
-      "https://wa.me/918157868804?text=" +
-      encodeURIComponent("Hi, I'm interested in " + name)
-    );
+    if (confirmAction) {
+      window.open(
+        "https://wa.me/918157868804?text=" +
+        encodeURIComponent("Hi, I'm interested in " + name)
+      );
+    }
     });
   });
 
@@ -214,6 +216,16 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle.classList.remove("active");
   }
 
+});
+</script>
+
+<script>
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader");
+
+  setTimeout(() => {
+    loader.classList.add("hide");
+  }, 1200);
 });
 </script>
 
