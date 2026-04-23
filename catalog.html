@@ -21,7 +21,9 @@
   </nav>
 
   <div class="menu-toggle" id="menu-toggle">
-    ☰
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </header>
 
@@ -119,12 +121,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const type = params.get("type");
 
-  // ACTIVE TAB
- document.querySelectorAll(".catalog-tabs a").forEach(link => {
-   if(link.href.includes(type)){
-     link.classList.add("active");
-   }
- });
+  // ACTIVE TAB (FIXED)
+document.querySelectorAll(".catalog-tabs a").forEach(link => {
+  const urlType = new URL(link.href).searchParams.get("type");
+
+  if (urlType === type) {
+    link.classList.add("active");
+  }
+});
 
   const sections = document.querySelectorAll(".catalog-section");
 
@@ -138,13 +142,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const activeSection = document.getElementById(type);
     activeSection.style.display = "block";
 
-    // smooth scroll
-    setTimeout(() => {
-      window.scrollTo({
-      top: activeSection.offsetTop - 90,
-      behavior: "smooth"
-    });
-    }, 100);
+  activeSection.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 
   } else {
     // fallback → show all
