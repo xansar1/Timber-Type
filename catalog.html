@@ -185,34 +185,37 @@ window.addEventListener("load", () => {
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    
-    const toggle = document.getElementById("menu-toggle");
-    const nav = document.querySelector(".nav-links");
-    const overlay = document.querySelector(".menu-overlay");
 
-    toggle.addEventListener("click", () => {
-      nav.classList.toggle("active");
-      toggle.classList.toggle("active");
-      overlay.classList.toggle("active");
-    });
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.querySelector(".nav-links");
+  const overlay = document.querySelector(".menu-overlay");
 
-    /* CLOSE WHEN CLICK OUTSIDE */
-    overlay.addEventListener("click", () => {
+  // OPEN / CLOSE MENU
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+    toggle.classList.toggle("active");
+    overlay.classList.toggle("active");
+  });
+
+  // CLOSE WHEN CLICK OVERLAY
+  overlay.addEventListener("click", () => {
+    nav.classList.remove("active");
+    toggle.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+
+  // CLOSE WHEN CLICK OUTSIDE
+  document.addEventListener("click", (e) => {
+    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
       nav.classList.remove("active");
       toggle.classList.remove("active");
       overlay.classList.remove("active");
-    });
+    }
   });
-  
-</script>
 
-<script>
-    document.addEventListener("click", (e) => {
-  if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-    nav.classList.remove("active");
-  }
 });
 </script>
+
 
 <div class="menu-overlay"></div>
 
