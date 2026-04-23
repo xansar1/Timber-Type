@@ -535,6 +535,7 @@ body::before {
 
   opacity: 0;
   pointer-events: none;
+  cursor: pointer;
 
   z-index: 1500;
   visibility: hidden;
@@ -552,6 +553,31 @@ body::before {
   opacity: 0;
   pointer-events: none;
   transition: 0.4s ease;
+}
+
+.nav-links {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  height: 100vh;
+  width: 75%;
+  max-width: 280px;
+
+  background: #3e2c23;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  padding: 100px 25px;
+  gap: 30px;
+
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+
+  z-index: 2000;
 }
 
 /* =========================
@@ -602,7 +628,10 @@ body::before {
 }
 
 @media (max-width: 600px) {
-
+  .nav-links{
+    display: none;
+  }
+  
   .nav-desktop {
     display: none;
   }
@@ -659,7 +688,7 @@ body::before {
     transform: translateX(100%);
     transition: transform 0.4s ease;
 
-    z-index: 2000;
+    z-index: 1000;
   }
 
   .nav-links a {
