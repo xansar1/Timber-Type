@@ -96,7 +96,7 @@ body::before {
   color: #fff;
 }
 
-.navbar nav a {
+.nav-desktop a {
   margin-left: 25px;
   text-decoration: none;
   color: #fff;
@@ -528,6 +528,24 @@ body::before {
   }
 }
 
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+
+  opacity: 0;
+  pointer-events: none;
+
+  z-index: 1500;
+  visibility: hidden;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
+}
+
 
 /* fade loader */
 .loader.hide {
@@ -585,7 +603,7 @@ body::before {
 
 @media (max-width: 600px) {
 
-  .navbar nav {
+  .nav-desktop {
     display: none;
   }
 
