@@ -182,29 +182,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!toggle || !nav || !overlay) return;
 
-  // OPEN MENU
+  let isOpen = false;
+
   toggle.addEventListener("click", (e) => {
-    e.stopPropagation(); // 🔥 IMPORTANT
-    nav.classList.toggle("active");
-    overlay.classList.toggle("active");
-    toggle.classList.toggle("active");
+    e.stopPropagation();
+
+    isOpen = !isOpen;
+
+    if (isOpen) {
+      nav.classList.add("active");
+      overlay.classList.add("active");
+      toggle.classList.add("active");
+    } else {
+      closeMenu();
+    }
   });
 
-  // CLOSE WHEN CLICK OVERLAY
-  overlay.addEventListener("click", () => {
-    closeMenu();
-  });
-
-  // CLOSE WHEN CLICK LINK
-  nav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", closeMenu);
-  });
+  overlay.addEventListener("click", closeMenu);
 
   function closeMenu() {
+    isOpen = false;
     nav.classList.remove("active");
     overlay.classList.remove("active");
     toggle.classList.remove("active");
   }
+
 });
   
 </script>
