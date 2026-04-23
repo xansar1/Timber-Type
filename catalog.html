@@ -128,60 +128,64 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const type = params.get("type");
 
-  // ACTIVE TAB (FIXED)
-document.querySelectorAll(".catalog-tabs a").forEach(link => {
-  const urlType = new URL(link.href).searchParams.get("type");
-
-  if (urlType === type || (!type && urlType === "room")) {
-    link.classList.add("active");
-  }
-});
-
   const sections = document.querySelectorAll(".catalog-section");
+  const tabs = document.querySelectorAll(".catalog-tabs a");
 
-  // HIDE ALL FIRST (important)
-  sections.forEach(section => {
-    section.style.display = "none";
-  });
+  // 🔥 RESET ALL
+  sections.forEach(section => section.style.display = "none");
+  tabs.forEach(tab => tab.classList.remove("active"));
 
-  // SHOW SELECTED
-  if(type && document.getElementById(type)){
-    const activeSection = document.getElementById(type);
+  // 🔥 DETERMINE ACTIVE TYPE
+  let activeType = type;
+
+  if (!activeType || !document.getElementById(activeType)) {
+    activeType = "room"; // default
+  }
+
+  // 🔥 SHOW ONLY ACTIVE SECTION
+  const activeSection = document.getElementById(activeType);
+  if (activeSection) {
     activeSection.style.display = "block";
 
-  window.scrollTo({
-    top: activeSection.offsetTop - 80,
-    behavior: "smooth"
-  });
-
-  } else {
-    // fallback → show all
-    sections.forEach(section => {
-      section.style.display = "block";
-    });
+    // smooth scroll (only if query present)
+    if (type) {
+      window.scrollTo({
+        top: activeSection.offsetTop - 80,
+        behavior: "smooth"
+      });
+    }
   }
 
-  // WHATSAPP CLICK
+  // 🔥 ACTIVE TAB HIGHLIGHT
+  tabs.forEach(link => {
+    const urlType = new URL(link.href).searchParams.get("type");
+
+    if (urlType === activeType) {
+      link.classList.add("active");
+    }
+  });
+
+  // 🔥 WHATSAPP CLICK
   document.querySelectorAll(".card img").forEach(img => {
     img.style.cursor = "pointer";
 
     img.addEventListener("click", () => {
       const name = img.dataset.name;
 
-     const confirmAction = confirm("View \"" + name + "\" and contact on WhatsApp?");
-
-    if (confirmAction) {
-      window.open(
-        "https://wa.me/918157868804?text=" +
-        encodeURIComponent("Hi, I'm interested in " + name)
+      const confirmAction = confirm(
+        "View \"" + name + "\" and contact on WhatsApp?"
       );
-    }
+
+      if (confirmAction) {
+        window.open(
+          "https://wa.me/918157868804?text=" +
+          encodeURIComponent("Hi, I'm interested in " + name)
+        );
+      }
     });
   });
 
 });
-
-
 </script>
 
 <script>
