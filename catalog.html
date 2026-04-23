@@ -29,6 +29,7 @@
 
   <nav class="nav-links">
     <a href="index.html">HOME</a>
+  </nav>
 
 <div class="catalog-tabs">
   <a href="catalog.html?type=room">Rooms</a>
@@ -169,9 +170,10 @@ document.querySelectorAll(".catalog-tabs a").forEach(link => {
 
       const confirmAction = confirm(`View "${name}" and contact on WhatsApp?`);
 
-      if(confirmAction){
-        window.open(`https://wa.me/918157868804?text=${encodeURIComponent("Hi, I'm interested in " + name)}`);
-      }
+     window.open(
+      "https://wa.me/918157868804?text=" +
+      encodeURIComponent("Hi, I'm interested in " + name)
+    );
     });
   });
 
