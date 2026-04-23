@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Catalog | Timber & Type</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="loader">
+  <img src="images/furniture-icon.png" alt="loading">
+</div>
+
+<header class="navbar">
+  <div class="logo">Timber & Type</div>
+
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+  </nav>
+
+  <div class="menu-toggle" id="menu-toggle">
+    ☰
+  </div>
+</header>
+
+<div class="catalog-tabs">
+  <a href="catalog.html?type=room">Rooms</a>
+  <a href="catalog.html?type=furniture">Furniture</a>
+  <a href="catalog.html?type=wood">Wood</a>
+  <a href="catalog.html?type=workspace">Workspace</a>
+</div>
+
+<section class="catalog-page">
+
+  <!-- ROOM -->
+  <div id="room" class="catalog-section">
+    <h2>Vintage Rooms</h2>
+    <div class="grid">
+
+      <div class="card"><img src="images/catalog/r1.jpg" data-name="Vintage Room 1"></div>
+      <div class="card"><img src="images/catalog/r2.jpg" data-name="Vintage Room 2"></div>
+      <div class="card"><img src="images/catalog/r3.jpg" data-name="Vintage Room 3"></div>
+      <div class="card"><img src="images/catalog/r4.jpg" data-name="Vintage Room 4"></div>
+      <div class="card"><img src="images/catalog/r5.jpg" data-name="Vintage Room 5"></div>
+      <div class="card"><img src="images/catalog/r6.jpg" data-name="Vintage Room 6"></div>
+      <div class="card"><img src="images/catalog/r7.jpg" data-name="Vintage Room 7"></div>
+      <div class="card"><img src="images/catalog/r8.jpg" data-name="Vintage Room 8"></div>
+      <div class="card"><img src="images/catalog/r9.jpg" data-name="Vintage Room 9"></div>
+
+    </div>
+  </div>
+
+  <!-- FURNITURE -->
+  <div id="furniture" class="catalog-section">
+    <h2>Old Furniture</h2>
+    <div class="grid">
+
+      <div class="card"><img src="images/catalog/f1.jpg" data-name="Furniture 1"></div>
+      <div class="card"><img src="images/catalog/f2.jpg" data-name="Furniture 2"></div>
+      <div class="card"><img src="images/catalog/f3.jpg" data-name="Furniture 3"></div>
+      <div class="card"><img src="images/catalog/f4.jpg" data-name="Furniture 4"></div>
+      <div class="card"><img src="images/catalog/f5.jpg" data-name="Furniture 5"></div>
+      <div class="card"><img src="images/catalog/f6.jpg" data-name="Furniture 6"></div>
+      <div class="card"><img src="images/catalog/f7.jpg" data-name="Furniture 7"></div>
+      <div class="card"><img src="images/catalog/f8.jpg" data-name="Furniture 8"></div>
+      <div class="card"><img src="images/catalog/f9.jpg" data-name="Furniture 9"></div>
+
+    </div>
+  </div>
+
+  <!-- WOOD -->
+  <div id="wood" class="catalog-section">
+    <h2>Wood Textures</h2>
+    <div class="grid">
+
+      <div class="card"><img src="images/catalog/w1.jpg" data-name="Wood Texture 1"></div>
+      <div class="card"><img src="images/catalog/w2.jpg" data-name="Wood Texture 2"></div>
+      <div class="card"><img src="images/catalog/w3.jpg" data-name="Wood Texture 3"></div>
+      <div class="card"><img src="images/catalog/w4.jpg" data-name="Wood Texture 4"></div>
+      <div class="card"><img src="images/catalog/w5.jpg" data-name="Wood Texture 5"></div>
+      <div class="card"><img src="images/catalog/w6.jpg" data-name="Wood Texture 6"></div>
+      <div class="card"><img src="images/catalog/w7.jpg" data-name="Wood Texture 7"></div>
+      <div class="card"><img src="images/catalog/w8.jpg" data-name="Wood Texture 8"></div>
+      <div class="card"><img src="images/catalog/w9.jpg" data-name="Wood Texture 9"></div>
+
+    </div>
+  </div>
+
+  <!-- WORKSPACE -->
+  <div id="workspace" class="catalog-section">
+    <h2>Vintage Workspace</h2>
+    <div class="grid">
+
+      <div class="card"><img src="images/catalog/ws1.jpg" data-name="Workspace 1"></div>
+      <div class="card"><img src="images/catalog/ws2.jpg" data-name="Workspace 2"></div>
+      <div class="card"><img src="images/catalog/ws3.jpg" data-name="Workspace 3"></div>
+      <div class="card"><img src="images/catalog/ws4.jpg" data-name="Workspace 4"></div>
+      <div class="card"><img src="images/catalog/ws5.jpg" data-name="Workspace 5"></div>
+      <div class="card"><img src="images/catalog/ws6.jpg" data-name="Workspace 6"></div>
+      <div class="card"><img src="images/catalog/ws7.jpg" data-name="Workspace 7"></div>
+      <div class="card"><img src="images/catalog/ws8.jpg" data-name="Workspace 8"></div>
+      <div class="card"><img src="images/catalog/ws9.jpg" data-name="Workspace 9"></div>
+
+    </div>
+  </div>
+
+</section>
+
+<section class="coming-soon">
+    <h3>More Designs coming soon...</h3>
+    <p>We are crafting new vintage collections ✨ </p>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type");
+
+  // ACTIVE TAB
+ document.querySelectorAll(".catalog-tabs a").forEach(link => {
+   if(link.href.includes(type)){
+     link.classList.add("active");
+   }
+ });
+
+  const sections = document.querySelectorAll(".catalog-section");
+
+  // HIDE ALL FIRST (important)
+  sections.forEach(section => {
+    section.style.display = "none";
+  });
+
+  // SHOW SELECTED
+  if(type && document.getElementById(type)){
+    const activeSection = document.getElementById(type);
+    activeSection.style.display = "block";
+
+    // smooth scroll
+    setTimeout(() => {
+      window.scrollTo({
+      top: activeSection.offsetTop - 90,
+      behavior: "smooth"
+    });
+    }, 100);
+
+  } else {
+    // fallback → show all
+    sections.forEach(section => {
+      section.style.display = "block";
+    });
+  }
+
+  // WHATSAPP CLICK
+  document.querySelectorAll(".card img").forEach(img => {
+    img.style.cursor = "pointer";
+
+    img.addEventListener("click", () => {
+      const name = img.dataset.name;
+
+      const confirmAction = confirm(`View "${name}" and contact on WhatsApp?`);
+
+      if(confirmAction){
+        window.open(`https://wa.me/918157868804?text=${encodeURIComponent("Hi, I'm interested in " + name)}`);
+      }
+    });
+  });
+
+});
+
+
+</script>
+
+<script>
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader");
+
+  setTimeout(() => {
+    loader.classList.add("hide");
+  }, 1500); // match animation time
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.querySelector(".nav-links");
+    const overlay = document.querySelector(".menu-overlay");
+
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+      toggle.classList.toggle("active");
+      overlay.classList.toggle("active");
+    });
+
+    /* CLOSE WHEN CLICK OUTSIDE */
+    overlay.addEventListener("click", () => {
+      nav.classList.remove("active");
+      toggle.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+  });
+  
+</script>
+
+<script>
+    document.addEventListener("click", (e) => {
+  if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+    nav.classList.remove("active");
+  }
+});
+</script>
+
+<div class="menu-overlay"></div>
+
+</body>
+</html>

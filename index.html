@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Timber & Type Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">Timber & Type</div>
+    <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#craft">Craft</a>
+        <a href="#material">Material</a>
+        <a href="#contact">Contact</a> 
+    </nav>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="content">
+    <h1>Timber & Type Studio</h1>
+    <p>Crafted like fine furniture — built for the digital world</p>
+    <a href="catalog.html" class="btn">Enter the Studio</a>
+  </div>
+</section>
+
+<section class="section fade-up">
+    <div class="text">
+      <h2>The Philosophy</h2>
+      <p>
+      We believe digital experiences should feel crafted — not generated.<br>
+      Like fine furniture, every detail matters — proportion, balance, and texture.<br>
+      Our approach blends timeless aesthetics with modern functionality, creating websites that feel intentional and enduring.
+      </p>
+    </div>
+</section>
+
+<!-- CRAFT SECTION -->
+<section id="craft" class="section fade-up">
+  <div class="text">
+    <h2>The Craft</h2>
+    <p>
+    Every project begins with a thoughtful process — understanding the story behind the brand.<br> 
+    We shape layouts, typography, and interactions with care, just like a craftsman shapes wood.<br>
+    Nothing is rushed. Every detail is refined until it feels right.
+    </p>
+  </div>
+  <div class="image">
+    <img src="images/craft.jpg" alt="Vintage furniture craftsmanship">
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MATERIAL SECTION -->
+<section id="material" class="section reverse fade-up">
+  <div class="text">
+    <h2>The Material</h2>
+    <p>
+    Strong foundations define lasting work. Clean code, structured layouts, and responsive design ensure your website performs seamlessly.<br>
+    We use modern tools, but with a timeless mindset — building for both today and the future.
+    </p>
+  </div>
+  <div class="image">
+    <img src="images/wood.jpg" alt="Wood material texture">
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DELIVERY -->
+<section id="delivery" class="section fade-up">
+  <div class="text">
+    <h2>The Finish</h2>
+    <p>
+    The final touch is where everything comes together.<br>
+    From smooth interactions to polished visuals, every element is refined for a premium feel.<br> 
+    What you receive is not just a website — but a complete, ready-to-use experience.
+    </p>
+  </div>
+  <div class="image">
+    <img src="images/delivery.jpg" alt="Vintage packaging delivery">
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CATALOG -->
+<section class="catalog fade-up">
+  <h2>The Collection</h2>
+  <p class="catalog-sub">A glimpse into crafted digital pieces</p>
+
+  <div class="catalog-grid">
+
+    <a href="catalog.html?type=room" class="item">
+      <img src="images/c1.jpg" alt="">
+      <div class="catalog-overlay">
+        <span class="title">Vintage Layout</span>
+        <span class="view">View More</span>
+      </div>
+    </a>
+
+    <a href="catalog.html?type=furniture" class="item">
+      <img src="images/c2.jpg" alt="">
+      <div class="catalog-overlay">
+        <span class="title">Classic UI</span>
+        <span class="view">View More</span>
+      </div>
+    </a>
+
+    <a href="catalog.html?type=wood" class="item">
+      <img src="images/c3.jpg" alt="">
+      <div class="catalog-overlay">
+        <span class="title">Elegant Store</span>
+        <span class="view">View More</span>
+      </div>
+    </a>
+
+    <a href="catalog.html?type=workspace" class="item">
+      <img src="images/c4.jpg" alt="">
+      <div class="catalog-overlay">
+        <span class="title">Minimal Brand</span>
+        <span class="view">View More</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta fade-up">
+  <h2>Bring Your Idea to Life</h2>
+  <p>
+  Let’s turn your idea into something meaningful.<br>
+  A website that doesn’t just exist — but stands out and feels crafted.
+  </p>
+  <a href="https://wa.me/918157868804" class="btn">Chat on WhatsApp</a>
+</section>
+
+<div class="divider"></div>
+
+<footer class="footer">
+  <p>© 2026 Timber & Type Studio</p>
+</footer>
+
+<script>
+const elements = document.querySelectorAll('.fade-up');
+
+window.addEventListener('scroll', () => {
+  elements.forEach((el, index) => {
+    const position = el.getBoundingClientRect().top;
+
+    if(position < window.innerHeight - 100 && !el.classList.contains('show')){
+      setTimeout(() => {
+        el.classList.add('show');
+      }, index * 150);
+    }
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.querySelector(".nav-links");
+    const overlay = document.querySelector(".menu-overlay");
+
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+      toggle.classList.toggle("active");
+      overlay.classList.toggle("active");
+    });
+
+    /* CLOSE WHEN CLICK OUTSIDE */
+    overlay.addEventListener("click", () => {
+      nav.classList.remove("active");
+      toggle.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+  });
+</script>
+
+<script>
+    document.addEventListener("click", (e) => {
+  if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+    nav.classList.remove("active");
+  }
+});
+</script>
+
+</body>
+</html>
