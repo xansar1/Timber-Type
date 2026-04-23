@@ -539,19 +539,20 @@ body::before {
 .menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.2);
-  backdrop-filter: blur(2px);
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(3px);
 
   opacity: 0;
   pointer-events: none;
-  transition: 0.3s;
 
   z-index: 1200;
+  visibility: hidden;
 }
 
 .menu-overlay.active {
   opacity: 1;
   pointer-events: all;
+  visibility: visible;
 }
 
 .nav-links {
