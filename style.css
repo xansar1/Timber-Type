@@ -670,8 +670,9 @@ body::before {
     position: fixed;
     top: 0;
     right: 0;
+    overflow-y: auto;
 
-    height: 100vh;
+    height: 100dvh;
     width: 75%;
     max-width: 280px;
 
