@@ -180,29 +180,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".nav-links");
   const overlay = document.querySelector(".menu-overlay");
 
-  if (!toggle || !nav || !overlay) return; // 🔥 safety
+  if (!toggle || !nav || !overlay) return;
 
-  toggle.addEventListener("click", () => {
+  // OPEN MENU
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation(); // 🔥 IMPORTANT
     nav.classList.toggle("active");
-    toggle.classList.toggle("active");
     overlay.classList.toggle("active");
+    toggle.classList.toggle("active");
   });
 
+  // CLOSE WHEN CLICK OVERLAY
   overlay.addEventListener("click", () => {
+    closeMenu();
+  });
+
+  // CLOSE WHEN CLICK LINK
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  function closeMenu() {
     nav.classList.remove("active");
-    toggle.classList.remove("active");
     overlay.classList.remove("active");
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-      nav.classList.remove("active");
-      toggle.classList.remove("active");
-      overlay.classList.remove("active");
-    }
-  });
-
+    toggle.classList.remove("active");
+  }
 });
+  
 </script>
 
 </body>
