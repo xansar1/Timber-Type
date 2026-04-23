@@ -546,7 +546,7 @@ body::before {
   pointer-events: none;
   transition: 0.3s;
 
-  z-index: 999;
+  z-index: 1500;
 }
 
 .menu-overlay.active {
@@ -573,7 +573,7 @@ body::before {
 /* =========================
    TABLET (iPad Only)
 ========================= */
-@media (min-width:601px) and (max-width: 1023px) {
+@media (min-width: 601px) and (max-width: 1023px) {
 
   .grid {
     grid-template-columns: repeat(2, 1fr);
@@ -679,21 +679,6 @@ body::before {
   /* ACTIVE MENU */
   .nav-links.active {
     transform: translateX(0);
-  }
-
-  /* BACKGROUND OVERLAY */
-  .menu-overlay {
-    position: fixed;
-    inset: 0;
-
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(4px);
-
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.3s;
-
-    z-index: 1500;
   }
 
   .menu-overlay.active {
