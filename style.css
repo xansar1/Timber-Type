@@ -536,31 +536,6 @@ body::before {
   transition: 0.4s ease;
 }
 
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.25);
-  backdrop-filter: blur(3px);
-
-  opacity: 0;
-  pointer-events: none;
-
-  z-index: 1200;
-  visibility: hidden;
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  pointer-events: all;
-  visibility: visible;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  background: red !important;
-}
-
 /* =========================
    LARGE DEVICES (Desktop)
 ========================= */
@@ -609,22 +584,19 @@ body::before {
 }
 
 @media (max-width: 600px) {
-  .nav-links {
-    display:flex;
-    will-change: transform;
+
+  .navbar nav {
+    display: none;
   }
-  
-  /* HAMBURGER ICON */
+
   .menu-toggle {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     width: 25px;
     height: 20px;
-
     cursor: pointer;
-    z-index: 2100; /* above menu */
+    z-index: 2100;
   }
 
   .menu-toggle span {
@@ -634,7 +606,6 @@ body::before {
     transition: 0.3s;
   }
 
-  /* ANIMATION (☰ → ✖) */
   .menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translateY(8px);
   }
@@ -647,7 +618,7 @@ body::before {
     transform: rotate(-45deg) translateY(-8px);
   }
 
-  /* SLIDE MENU PANEL */
+  /* ✅ FIXED MENU */
   .nav-links {
     position: fixed;
     top: 0;
@@ -657,28 +628,33 @@ body::before {
     width: 75%;
     max-width: 280px;
 
-    background: rgba(62,44,35,0.9);
+    background: #3e2c23; /* solid — no blur */
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
+    align-items: flex-start; /* 👈 IMPORTANT */
+    justify-content: flex-start; /* 👈 IMPORTANT */
+
+    padding: 100px 25px; /* 👈 spacing like your design */
+    gap: 30px;
 
     transform: translateX(100%);
     transition: transform 0.4s ease;
 
     z-index: 2000;
-    padding-top: 80px; /* better spacing */
   }
 
   .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
+
+    width: 100%;
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* 👈 divider lines */
   }
 
-  /* ACTIVE MENU */
   .nav-links.active {
     transform: translateX(0);
   }
