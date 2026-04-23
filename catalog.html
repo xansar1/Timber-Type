@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelectorAll(".catalog-tabs a").forEach(link => {
   const urlType = new URL(link.href).searchParams.get("type");
 
-  if (urlType === type || (!type && urlType === "room)) {
+  if (urlType === type || (!type && urlType === "room")) {
     link.classList.add("active");
   }
 });
