@@ -136,6 +136,14 @@ body::before {
   cursor: pointer;
 }
 
+.menu-overlay {
+  pointer-events: none;
+}
+
+.menu-overlay.active{
+  pointer-events: all;
+}
+
 .content {
   position: relative;
   z-index: 2;
