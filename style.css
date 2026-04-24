@@ -645,10 +645,6 @@ body::before {
 }
 
 @media (max-width: 600px) {
-  .nav-links{
-    display: none;
-  }
-  
   .nav-desktop {
     display: none;
   }
@@ -689,11 +685,11 @@ body::before {
     right: 0;
     overflow-y: auto;
 
-    height: 100dvh;
+    height: 100vh;
     width: 75%;
     max-width: 280px;
 
-    background: #3e2c23; /* solid — no blur */
+    background: #3e2c23; 
 
     display: flex;
     flex-direction: column;
@@ -706,7 +702,7 @@ body::before {
     transform: translateX(100%);
     transition: transform 0.4s ease;
 
-    z-index: 1000;
+    z-index: 2000;
   }
 
   .nav-links a {
