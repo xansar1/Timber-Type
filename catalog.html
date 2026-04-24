@@ -168,15 +168,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const name = img.dataset.name;
 
-      const message = Hi, I'm interested in "${name}";
+      const message = `Hi, I'm interested in "${name}"`;
 
-      const url = https://wa.me/918157868804?text=${encodeURIComponent(message)};
+      const url = `https://wa.me/918157868804?text=${encodeURIComponent(message)}`;
 
       window.open(url, "_blank");
     });
   });
-});
-  
 });
 </script>
 
