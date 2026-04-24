@@ -151,16 +151,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ===== WHATSAPP CLICK =====
-  document.querySelectorAll(".card img").forEach(img => {
-    img.addEventListener("click", () => {
-      const name = img.dataset.name;
+  document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("click", () => {
 
-      const message = `Hi, I'm interested in "${name}"`;
-      const url = `https://wa.me/918157868804?text=${encodeURIComponent(message)}`;
+    const name = card.querySelector("img").dataset.name;
 
-      window.open(url, "_blank");
-    });
+    const message = `Hi, I'm interested in "${name}"`;
+    const url = `https://wa.me/918157868804?text=${encodeURIComponent(message)}`;
+
+    window.location.href = url; // better for mobile
   });
+});
 
   // ===== MOBILE MENU =====
   const toggle = document.getElementById("menu-toggle");
