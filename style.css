@@ -421,6 +421,8 @@ body::before {
   align-items: center;
   justify-content: center;
 
+  pointer-events: none;
+
   background: rgba(62,44,35,0.6);
   color: #fff;
 
