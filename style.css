@@ -140,6 +140,7 @@ body::before {
 }
 
 .menu-overlay {
+  display: none;
   pointer-events: none;
 }
 
