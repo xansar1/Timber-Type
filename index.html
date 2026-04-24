@@ -223,9 +223,9 @@ document.addEventListener("DOMContentLoaded", () => {
           const target = document.querySelector(targetId);
   
           if (target) {
-            window.scrollTo({
-              top: target.offsetTop - 80,
-              behavior: "smooth"
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
             });
           }
         }, 300); // wait for menu animation
