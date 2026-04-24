@@ -10,8 +10,11 @@ html {
   scroll-behavior: smooth;
 }
 
-section {
-  scroll-margin-top: 90px;
+#home,
+#craft,
+#material,
+#contact {
+  scroll-margin-top: 100px;
 }
 
 /* GRAIN EFFECT */
