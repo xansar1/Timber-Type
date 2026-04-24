@@ -131,57 +131,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".catalog-section");
   const tabs = document.querySelectorAll(".catalog-tabs a");
 
-  // 🔥 RESET ALL
-  sections.forEach(section => section.style.display = "none");
-  tabs.forEach(tab => tab.classList.remove("active"));
-
-  // 🔥 DETERMINE ACTIVE TYPE
+  // ✅ DEFAULT TYPE
   let activeType = type;
-
   if (!activeType || !document.getElementById(activeType)) {
-    activeType = "room"; // default
+    activeType = "room";
   }
 
-  // 🔥 SHOW ONLY ACTIVE SECTION
+  // ✅ SHOW / HIDE USING CLASS (better than display none)
+  sections.forEach(section => {
+    section.classList.remove("active");
+  });
+
   const activeSection = document.getElementById(activeType);
   if (activeSection) {
-    activeSection.style.display = "block";
-
-    // smooth scroll (only if query present)
-    if (type) {
-      window.scrollTo({
-        top: activeSection.offsetTop - 80,
-        behavior: "smooth"
-      });
-    }
+    activeSection.classList.add("active");
   }
 
-  // 🔥 ACTIVE TAB HIGHLIGHT
+  // ✅ ACTIVE TAB
   tabs.forEach(link => {
     const urlType = new URL(link.href).searchParams.get("type");
 
     if (urlType === activeType) {
       link.classList.add("active");
+    } else {
+      link.classList.remove("active");
     }
   });
 
-  // 🔥 WHATSAPP CLICK
+  // ✅ CLICK → DIRECT WHATSAPP (NO CONFIRM BOX)
   document.querySelectorAll(".card img").forEach(img => {
     img.style.cursor = "pointer";
 
     img.addEventListener("click", () => {
       const name = img.dataset.name;
 
-      const confirmAction = confirm(
-        "View \"" + name + "\" and contact on WhatsApp?"
+      window.open(
+        "https://wa.me/918157868804?text=" +
+        encodeURIComponent("Hi, I'm interested in " + name),
+        "_blank"
       );
-
-      if (confirmAction) {
-        window.open(
-          "https://wa.me/918157868804?text=" +
-          encodeURIComponent("Hi, I'm interested in " + name)
-        );
-      }
     });
   });
 
