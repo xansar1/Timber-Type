@@ -140,12 +140,11 @@ body::before {
 }
 
 .menu-overlay {
-  display: none;
   pointer-events: none;
 }
 
 .menu-overlay.active{
-  pointer-events: all;
+  pointer-events: auto;
 }
 
 .content {
@@ -554,8 +553,7 @@ body::before {
   background: rgba(0,0,0,0.3);
 
   opacity: 0;
-  pointer-events: none;
-  cursor: pointer;
+  transition: 0.3s;
 
   z-index: 1500;
   visibility: hidden;
@@ -563,7 +561,6 @@ body::before {
 
 .menu-overlay.active {
   opacity: 1;
-  pointer-events: all;
   visibility: visible;
 }
 
