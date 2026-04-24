@@ -160,19 +160,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ✅ CLICK → DIRECT WHATSAPP (NO CONFIRM BOX)
   document.querySelectorAll(".card img").forEach(img => {
+
     img.style.cursor = "pointer";
 
     img.addEventListener("click", () => {
+
       const name = img.dataset.name;
 
-      window.open(
-        "https://wa.me/918157868804?text=" +
-        encodeURIComponent("Hi, I'm interested in " + name),
-        "_blank"
-      );
+      const message = Hi, I'm interested in "${name}";
+
+      const url = https://wa.me/918157868804?text=${encodeURIComponent(message)};
+
+      window.open(url, "_blank");
     });
   });
-
+});
+  
 });
 </script>
 
