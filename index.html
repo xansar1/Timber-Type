@@ -208,8 +208,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ❌ CLOSE ON LINK CLICK (THIS IS YOUR ISSUE 3 FIX)
   nav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      closeMenu();
+    link.addEventListener("click", (e) => {
+  
+      const targetId = link.getAttribute("href");
+  
+      if (targetId.startsWith("#")) {
+        e.preventDefault();
+  
+        closeMenu();
+  
+        setTimeout(() => {
+          const target = document.querySelector(targetId);
+  
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: "smooth"
+            });
+          }
+        }, 300); // wait for menu animation
+      }
     });
   });
 
