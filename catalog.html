@@ -122,104 +122,78 @@
 </section>
 
 <div class="menu-overlay"></div>
-  
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
+  // ===== CATALOG LOGIC =====
   const params = new URLSearchParams(window.location.search);
   const type = params.get("type");
 
   const sections = document.querySelectorAll(".catalog-section");
   const tabs = document.querySelectorAll(".catalog-tabs a");
 
-  // ✅ DEFAULT TYPE
   let activeType = type;
   if (!activeType || !document.getElementById(activeType)) {
     activeType = "room";
   }
 
-  // ✅ SHOW / HIDE USING CLASS (better than display none)
-  sections.forEach(section => {
-    section.classList.remove("active");
-  });
+  sections.forEach(section => section.classList.remove("active"));
 
   const activeSection = document.getElementById(activeType);
   if (activeSection) {
     activeSection.classList.add("active");
   }
 
-  // ✅ ACTIVE TAB
   tabs.forEach(link => {
     const urlType = new URL(link.href).searchParams.get("type");
-
-    if (urlType === activeType) {
-      link.classList.add("active");
-    } else {
-      link.classList.remove("active");
-    }
+    link.classList.toggle("active", urlType === activeType);
   });
 
-  // ✅ CLICK → DIRECT WHATSAPP (NO CONFIRM BOX)
+  // ===== WHATSAPP CLICK =====
   document.querySelectorAll(".card img").forEach(img => {
-
-    img.style.cursor = "pointer";
-
     img.addEventListener("click", () => {
-
       const name = img.dataset.name;
 
       const message = `Hi, I'm interested in "${name}"`;
-
       const url = `https://wa.me/918157868804?text=${encodeURIComponent(message)}`;
 
       window.open(url, "_blank");
     });
   });
-});
-</script>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
+  // ===== MOBILE MENU =====
   const toggle = document.getElementById("menu-toggle");
   const nav = document.querySelector(".nav-links");
   const overlay = document.querySelector(".menu-overlay");
 
-  if (!toggle || !nav || !overlay) {
-    console.error("Menu elements missing");
-    return;
-  }
+  if (toggle && nav && overlay) {
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      nav.classList.toggle("active");
+      overlay.classList.toggle("active");
+      toggle.classList.toggle("active");
+    });
 
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
+    overlay.addEventListener("click", closeMenu);
 
-    nav.classList.toggle("active");
-    overlay.classList.toggle("active");
-    toggle.classList.toggle("active");
-  });
+    nav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
 
-  overlay.addEventListener("click", closeMenu);
-
-  nav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", closeMenu);
-  });
-
-  function closeMenu() {
-    nav.classList.remove("active");
-    overlay.classList.remove("active");
-    toggle.classList.remove("active");
+    function closeMenu() {
+      nav.classList.remove("active");
+      overlay.classList.remove("active");
+      toggle.classList.remove("active");
+    }
   }
 
 });
-</script>
 
-<script>
+// ===== LOADER =====
 window.addEventListener("load", () => {
   const loader = document.querySelector(".loader");
-
-  setTimeout(() => {
-    loader.classList.add("hide");
-  }, 1200);
+  setTimeout(() => loader.classList.add("hide"), 1200);
 });
 </script>
 
