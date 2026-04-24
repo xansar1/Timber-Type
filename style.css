@@ -140,7 +140,7 @@ body::before {
   pointer-events: none;
 }
 
-.menu-overlay.active{
+.menu.overlay.active{
   pointer-events: all;
 }
 
