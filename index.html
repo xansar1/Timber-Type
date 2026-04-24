@@ -9,13 +9,13 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="top">
 
 <header class="navbar">
   <div class="logo">Timber & Type</div>
 
   <nav class="nav-desktop">
-    <a href="#">Home</a>
+    <a href="#top">Home</a>
     <a href="#craft">Craft</a>
     <a href="#material">Material</a>
     <a href="#contact">Contact</a> 
@@ -30,7 +30,7 @@
 
 <!-- 🔥 MOBILE MENU OUTSIDE -->
 <nav class="nav-links" id="mobile-menu">
-  <a href="#">Home</a>
+  <a href="#top">Home</a>
   <a href="#craft">Craft</a>
   <a href="#material">Material</a>
   <a href="#contact">Contact</a> 
@@ -208,7 +208,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ❌ CLOSE ON LINK CLICK (THIS IS YOUR ISSUE 3 FIX)
   nav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", closeMenu);
+    link.addEventListener("click", () => {
+      closeMenu();
+    });
   });
 
   function closeMenu() {
