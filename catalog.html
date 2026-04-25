@@ -162,7 +162,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const name = img.dataset.name || "this design";
 
-      const message = `Hi, I saw your design "${name}". I want a similar website for my business.`;
+      const imageUrl = window.location.origin + "/" + img.getAttribute("src");
+
+      const message = `Hi, I saw this design: ${imageUrl}
+  I want a similar website like "${name}". Can you share details?`;
 
       const url = `https://wa.me/918157868804?text=${encodeURIComponent(message)}`;
 
