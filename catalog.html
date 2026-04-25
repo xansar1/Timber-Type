@@ -126,7 +126,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ===== CATALOG LOGIC =====
+  // ===== CATALOG =====
   const params = new URLSearchParams(window.location.search);
   const type = params.get("type");
 
@@ -150,56 +150,45 @@ document.addEventListener("DOMContentLoaded", () => {
     link.classList.toggle("active", urlType === activeType);
   });
 
-  // ===== WHATSAPP CLICK =====
+  // ===== WHATSAPP =====
   document.querySelectorAll(".card").forEach(card => {
 
-  const img = card.querySelector("img");
-  if (!img) return; // safety
+    const img = card.querySelector("img");
+    if (!img) return;
 
-  img.style.cursor = "pointer";
+    img.style.cursor = "pointer";
 
-  img.addEventListener("click", () => {
+    img.addEventListener("click", () => {
 
-    const name = img.dataset.name || "this design";
+      const name = img.dataset.name || "this design";
 
-    const message = `Hi, I saw your design "${name}". I want a similar website for my business. Can you share details?`;
+      const message = `Hi, I saw your design "${name}". I want a similar website for my business.`;
 
-    const url = `https://wa.me/918157868804?text=${encodeURIComponent(message)}`;
+      const url = `https://wa.me/918157868804?text=${encodeURIComponent(message)}`;
 
-    if (window.innerWidth < 768) {
       window.location.href = url;
-    } else {
-      window.open(url, "_blank");
-    }
+
+    });
 
   });
 
-});
-
-  // ===== MOBILE MENU =====
+  // ===== MENU =====
   const toggle = document.getElementById("menu-toggle");
   const nav = document.querySelector(".nav-links");
   const overlay = document.querySelector(".menu-overlay");
 
   if (toggle && nav && overlay) {
-    toggle.addEventListener("click", (e) => {
-      e.stopPropagation();
+    toggle.addEventListener("click", () => {
       nav.classList.toggle("active");
       overlay.classList.toggle("active");
       toggle.classList.toggle("active");
     });
 
-    overlay.addEventListener("click", closeMenu);
-
-    nav.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", closeMenu);
-    });
-
-    function closeMenu() {
+    overlay.addEventListener("click", () => {
       nav.classList.remove("active");
       overlay.classList.remove("active");
       toggle.classList.remove("active");
-    }
+    });
   }
 
 });
