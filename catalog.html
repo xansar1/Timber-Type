@@ -162,30 +162,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== WHATSAPP =====
   document.querySelectorAll(".card").forEach(card => {
 
-    const img = card.querySelector("img");
-    if (!img) return;
+    card.addEventListener("click", () => {
 
-    img.style.cursor = "pointer";
-
-    img.addEventListener("click", () => {
-
-      const name = img.dataset.name || "this design";
-
+      const img = card.querySelector("img");
+      if (!img) return;
+  
       const imageUrl = new URL(img.getAttribute("src"), window.location.href).href;
-
-      const message = `Hi, I liked this design: 
-      ${imageUrl}
-      
-      I want a this same design for my shop. Can you create it for me?`;
+  
+      const message = `Hi, I liked this design:
+  ${imageUrl}
+  
+  I want the same design for my shop.`;
 
       const url = `https://wa.me/918157868804?text=${encodeURIComponent(message)}`;
+  
+      window.open(url, "_blank");  // ✅ FIXED
 
-      window.open(url, "_blank");
-
-    });
-
-  });
-
+     });
+  
+   });
   // ===== MENU =====
   const toggle = document.getElementById("menu-toggle");
   const nav = document.querySelector(".nav-links");
