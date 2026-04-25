@@ -152,15 +152,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== WHATSAPP CLICK =====
   document.querySelectorAll(".card").forEach(card => {
-  card.addEventListener("click", () => {
 
-    const name = card.querySelector("img").dataset.name;
+  const img = card.querySelector("img");
+  if (!img) return; // safety
 
-    const message = `Hi, I'm interested in "${name}"`;
-    const url = `https://wa.me/918157868804?text=${encodeURIComponent(message)}`;
+  img.style.cursor = "pointer";
 
-    window.location.href = url; // better for mobile
+  img.addEventListener("click", () => {
+
+    const name = img.dataset.name || "this design";
+
+    const message = Hi, I saw your design "${name}". I want a similar website for my business. Can you share details?;
+
+    const url = https://wa.me/918157868804?text=${encodeURIComponent(message)};
+
+    if (window.innerWidth < 768) {
+      window.location.href = url;
+    } else {
+      window.open(url, "_blank");
+    }
+
   });
+
 });
 
   // ===== MOBILE MENU =====
