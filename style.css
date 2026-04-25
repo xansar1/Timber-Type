@@ -187,6 +187,17 @@ body::before {
   width: 100%;
 }
 
+.secondary-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  margin-left: 10px;
+}
+
+.secondary-btn:hover {
+  background: #fff;
+  color: #3e2c23;
+}
+
 /* SECTION */
 .section {
   display: flex;
