@@ -237,6 +237,14 @@ body::before {
   opacity: 0.6;
 }
 
+.trust-line {
+  text-align: center;
+  font-size: 13px;
+  color: #6b5c50;
+  margin-top: 20px;
+  letter-spacing: 0.5px;
+}
+
 /* CATALOG */
 .catalog {
   text-align: center;
@@ -625,6 +633,30 @@ body::before {
   transition: transform 0.4s ease;
 
   z-index: 2000;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  background: #25D366;
+  color: white;
+
+  padding: 12px 18px;
+  border-radius: 30px;
+
+  font-size: 14px;
+  text-decoration: none;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+
+  z-index: 9999;
+  transition: 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.05);
 }
 
 /* =========================
