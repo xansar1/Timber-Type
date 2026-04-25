@@ -511,7 +511,6 @@ body::before {
 
   font-family: 'Playfair Display', serif;
   font-size: 18px;
-  letter-spacing: 1px;
 
   color: #fff;
 
@@ -519,12 +518,10 @@ body::before {
     to top,
     rgba(0,0,0,0.6),
     rgba(0,0,0,0.1)
-    );
+  );
 
-  opacity: 1;
-  transition: all 0.4s ease;
-
-  backdrop-filter: blur(2px);
+  opacity: 0;   
+  transition: 0.3s;
 }
 
 .card:hover {
@@ -532,6 +529,10 @@ body::before {
 }
 
 .card:hover::after {
+  opacity: 1;
+}
+
+.card:active::after {
   opacity: 1;
 }
 
