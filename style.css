@@ -500,7 +500,7 @@ body::before {
 }
 
 .card::after {
-  content: "Get this design";
+  content: "Get more design";
 
   position: absolute;
   inset: 0;
