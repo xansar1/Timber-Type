@@ -394,8 +394,37 @@ body::before {
   aspect-ratio: auto;
   transition: 0.3s;
 }
+
+.card::after {
+  content: "Get this design";
+
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+
+  color: #fff;
+
+  background: rgba(0,0,0,0.45);
+
+  opacity: 0;
+  transition: all 0.4s ease;
+
+  backdrop-filter: blur(2px);
+}
+
 .card:hover {
   transform: translateY(-6px);
+}
+
+.card:hover::after {
+  opacity: 1;
 }
 
 /* IMAGE */
@@ -765,6 +794,12 @@ body::before {
   /* CARDS */
   .card img {
     height: 180px;
+  }
+
+  .card::after {
+    opacity: 1;
+    background: rgba(0,0,0,0.3)
+    font-size: 14px;
   }
 
   /* TABS */
