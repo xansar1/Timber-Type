@@ -162,9 +162,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const name = img.dataset.name || "this design";
 
-    const message = Hi, I saw your design "${name}". I want a similar website for my business. Can you share details?;
+    const message = `Hi, I saw your design "${name}". I want a similar website for my business. Can you share details?`;
 
-    const url = https://wa.me/918157868804?text=${encodeURIComponent(message)};
+    const url = `https://wa.me/918157868804?text=${encodeURIComponent(message)}`;
 
     if (window.innerWidth < 768) {
       window.location.href = url;
