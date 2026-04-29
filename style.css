@@ -759,7 +759,7 @@ body::before {
 }
 
 /* =========================
-   AI DEMO SECTION
+   AI DEMO SECTION (PREMIUM)
 ========================= */
 .ai-demo {
   text-align: center;
@@ -777,6 +777,7 @@ body::before {
   margin-top: 10px;
 }
 
+/* BOX */
 .demo-box {
   position: relative;
   width: 100%;
@@ -787,12 +788,19 @@ body::before {
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
+/* IMAGES */
 .demo-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: 0.5s;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* BEFORE IMAGE */
+.before {
+  position: relative;
+  z-index: 1;
 }
 
 /* AFTER IMAGE */
@@ -801,11 +809,48 @@ body::before {
   top: 0;
   left: 0;
   opacity: 0;
+  transform: scale(1.05);
 }
 
-/* TOGGLE EFFECT */
+/* ACTIVE STATE */
 .demo-box.active .after {
   opacity: 1;
+  transform: scale(1);
+}
+
+.demo-box.active .before {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* ✨ LIGHT SWEEP EFFECT */
+.demo-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.2),
+    transparent
+  );
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.demo-box.active::after {
+  animation: sweep 1s ease;
+}
+
+@keyframes sweep {
+  from {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
 
 /* BUTTON */
@@ -817,12 +862,16 @@ body::before {
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .ai-demo button:hover {
   background: #a06f4a;
   transform: translateY(-2px);
+}
+
+.ai-demo button:active {
+  transform: scale(0.95);
 }
 
 /* =========================
@@ -1036,6 +1085,19 @@ body::before {
   
   .demo-box {
     max-width: 100%;
+  }
+
+  /* SMOOTHER MOBILE ANIMATION */
+  .demo-box img {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .demo-box.active .before {
+    transform: scale(0.98);
+  }
+  
+  .demo-box.active .after {
+    transform: scale(1);
   }
   
   .ai-demo button {
