@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Style Matchmaker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  background: #f2e3d5;
+  padding: 40px;
+}
+
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: auto;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 15px;
+  background: #c08a5d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+img {
+  max-width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>AI Room Style Match</h2>
+  <input type="file" id="upload">
+  <br>
+  <img id="preview">
+  <br>
+  <button onclick="analyze()">Analyze Style</button>
+  <div id="result"></div>
+</div>
+
+<script>
+function analyze() {
+  const file = document.getElementById("upload").files[0];
+  if (!file) return alert("Upload image first");
+
+  const img = document.getElementById("preview");
+  img.src = URL.createObjectURL(file);
+
+  img.onload = () => {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    ctx.drawImage(img, 0, 0);
+
+    const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+
+    let r = 0, g = 0, b = 0, count = 0;
+
+    for (let i = 0; i < data.length; i += 20) {
+      r += data[i];
+      g += data[i+1];
+      b += data[i+2];
+      count++;
+    }
+
+    r = r / count;
+    g = g / count;
+    b = b / count;
+
+    let style = "";
+
+    if (r > 150 && g > 120 && b < 100) {
+      style = "Vintage Wooden Style 🪵";
+    } else if (r > 200 && g > 200 && b > 200) {
+      style = "Minimal Modern Style ⚪";
+    } else if (r < 80 && g < 80 && b < 80) {
+      style = "Luxury Dark Style 🖤";
+    } else {
+      style = "Contemporary Mixed Style ✨";
+    }
+
+    document.getElementById("result").innerHTML =
+      "Detected Style: " + style;
+  };
+}
+</script>
+
+</body>
+</html>
