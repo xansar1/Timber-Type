@@ -738,6 +738,8 @@ body::before {
    AI TOOL SECTION
 ========================= */
 .ai-tool {
+  position: relative;
+  
   text-align: center;
   padding: 100px 8%;
   background: rgba(255,255,255,0.4);
@@ -874,15 +876,11 @@ body::before {
   transform: scale(0.95);
 }
 
-.demo-box {
-  position: relative; /* VERY IMPORTANT */
-}
-
 /* 🔴 DEMO BADGE */
 .demo-badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: -10px;
+  left: -10px;
 
   background: #e53935;
   color: white;
@@ -903,9 +901,9 @@ body::before {
 
 /* ✨ subtle premium animation */
 @keyframes pulseBadge {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.08); opacity: 0.85; }
-  100% { transform: scale(1); opacity: 1; }
+  0% { box-shadow: 0 0 0 rgba(229,57,53,0.6); }
+  70% { box-shadow: 0 0 12px rgba(229,57,53,0.3); }
+  100% { box-shadow: 0 0 0 rgba(229,57,53,0); }
 }
 
 
@@ -1138,6 +1136,11 @@ body::before {
   .ai-demo button {
     padding: 10px 22px;
     font-size: 13px;
+  }
+
+  .demo-badge {
+    font-size: 10px;
+    padding: 5px 10px;
   }
 
   /* AI TOOL MOBILE */
