@@ -747,6 +747,7 @@ body::before {
   border-radius: 12px;
   max-width: 800px;
   margin: 60px auto;
+  overflow: hidden;
 }
 
 .ai-tool h2 {
@@ -879,13 +880,13 @@ body::before {
 /* 🔴 DEMO BADGE */
 .demo-badge {
   position: absolute;
-  top: -10px;
-  left: -10px;
+  top: 12px;
+  left: 12px;
 
-  background: #e53935;
+  background: linear-gradient(135deg, #ff4d4d, #c62828);
   color: white;
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 1px;
 
@@ -894,9 +895,9 @@ body::before {
 
   z-index: 10;
 
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
 
-  animation: pulseBadge 1.8s infinite;
+  backdrop-filter: blur(4px);
 }
 
 /* ✨ subtle premium animation */
