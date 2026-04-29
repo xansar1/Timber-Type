@@ -215,7 +215,7 @@
     <img src="images/after.jpg" class="after">
   </div>
 
-  <button onclick="toggle()">View Transformation</button>
+  <button onclick="toggleDemo()">View Transformation</button>
 </section>
 
 <!-- CTA -->
@@ -289,11 +289,11 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle.classList.remove("active");
   }
 
-  function toggle() {
-    document.querySelector(".demo-box").classList.toggle("active");
+  function toggleDemo() {
+    document.querySelector(".ai-demo .demo-box").classList.toggle("active");
   }
 
-  window.toggle = toggle;
+  window.toggle = toggleDemo;
 
 });
 </script>
