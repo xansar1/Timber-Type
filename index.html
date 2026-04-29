@@ -205,6 +205,18 @@
   <a href="ai.html" class="btn">Try AI Tool</a>
 </section>
 
+<section class="ai-demo fade-up">
+  <h2>AI Room Transformation</h2>
+  <p>See how AI redesigns a normal room into a vintage luxury space</p>
+
+  <div class="demo-box">
+    <img src="images/before.jpg" class="before">
+    <img src="images/after.jpg" class="after">
+  </div>
+
+  <button onclick="toggle()">View Transformation</button>
+</section>
+
 <!-- CTA -->
 <section id="contact" class="cta fade-up">
   <h2>Bring Your Idea to Life</h2>
@@ -275,6 +287,12 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.classList.remove("active");
     toggle.classList.remove("active");
   }
+
+  function toggle() {
+    document.querySelector(".demo-box").classList.toggle("active");
+  }
+
+  window.toggle = toggle;
 
 });
 </script>
